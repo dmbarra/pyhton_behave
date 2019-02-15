@@ -12,9 +12,12 @@ def verify_my_task_link(context):
 
 @then(u'I see message saying that list belongs to that user')
 def verify_message_about_user(context):
-    pass
+    manage = ManagePage(context)
+    verify.Equal(manage.return_message_welcome(), "​Hey Daniel Barra, this is your todo list for today:")
 
 
 @then(u'I can create new task')
 def verify_possibility_create_new_task(context):
-    pass
+    manage = ManagePage(context)
+    verify.Truthy(manage.add_task_is_present())
+    manage.click_add_tasks()
