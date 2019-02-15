@@ -1,9 +1,13 @@
 from behave import then
+import verify
+from pages.manage_page import ManagePage
 
 
 @then(u'I see "My Tasks"')
 def verify_my_task_link(context):
-    pass
+    manage = ManagePage(context)
+    verify.Truthy(manage.my_task_is_present())
+    manage.click_my_tasks()
 
 
 @then(u'I see message saying that list belongs to that user')

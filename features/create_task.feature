@@ -15,6 +15,11 @@ Feature: Create Task
     Then the new task is present on list
 
   @not_implemented
+  Scenario: Create new task without required title
+    When I add new task without required field
+    Then the new task is present on list
+
+  @not_implemented
   Scenario: Remove task
     When I remove a task
     Then the task is removed
