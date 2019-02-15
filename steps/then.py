@@ -21,3 +21,9 @@ def verify_possibility_create_new_task(context):
     manage = ManagePage(context)
     verify.Truthy(manage.add_task_is_present())
     manage.click_add_tasks()
+
+
+@then(u'the new task is present on list')
+def verify_possibility_create_new_task(context):
+    manage = ManagePage(context)
+    verify.Truthy(manage.my_task_is_present_on_table(context.task_name))

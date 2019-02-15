@@ -9,7 +9,6 @@ Feature: Create Task
     And I see message saying that list belongs to that user
     And I can create new task
 
-  @not_implemented
   Scenario: Create new task
     When I add new task
     Then the new task is present on list
