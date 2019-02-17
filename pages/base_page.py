@@ -7,5 +7,5 @@ class BasePage(object):
     def find_element(self, *loc):
         return self.browser.find_element(*loc)
 
-
-
+    def find_elements(self, *loc):
+        return self.browser.find_elements(*loc)

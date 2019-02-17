@@ -5,13 +5,13 @@ Feature: Create SubTask
     And I login on app
     And I have task
 
-  @not_implemented
   Scenario: Create new subtask
     Given I open manage subtask
     When I fill subtask description
     And I fill the subtask date
     And I submit subtask
     Then the new subtask is present on list of subtasks
+    And the numbers of subtasks is showed on tasks table
 
   @not_implemented
   Scenario: Create new subtask without description requirement

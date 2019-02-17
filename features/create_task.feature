@@ -12,6 +12,7 @@ Feature: Create Task
   Scenario: Create new task
     When I add new task
     Then the new task is present on list
+    And numbers of subtasks is zero
 
   @not_implemented
   Scenario: Create new task without required title

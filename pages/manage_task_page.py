@@ -1,9 +1,11 @@
+import re
+
 from selenium.webdriver.common.by import By
 
 from pages.base_page import BasePage
 
 
-class ManagePage(BasePage):
+class ManageTaskPage(BasePage):
 
     locator_dictionary = {
         "my_taks": (By.CSS_SELECTOR, ".nav a[href='/tasks']"),
@@ -41,3 +43,17 @@ class ManagePage(BasePage):
         rows = table_id.find_elements(By.TAG_NAME, "tr")
         for row in rows:
             return row.find_elements(By.TAG_NAME, "td")[1].text == value
+
+    def open_manage_subtasks(self, task_name):
+        table_id = self.find_element(*self.locator_dictionary['table_of_tasks'])
+        rows = table_id.find_elements(By.TAG_NAME, "tr")
+        for row in rows:
+            if row.find_elements(By.TAG_NAME, "td")[1].text == task_name:
+                row.find_elements(By.TAG_NAME, "td")[3].click()
+
+    def how_many_subtasks(self, task_name):
+        table_id = self.find_element(*self.locator_dictionary['table_of_tasks'])
+        rows = table_id.find_elements(By.TAG_NAME, "tr")
+        for row in rows:
+            if row.find_elements(By.TAG_NAME, "td")[1].text == task_name:
+                return int(re.sub("[^0-9]", "", row.find_elements(By.TAG_NAME, "td")[3].text))
